@@ -66,11 +66,11 @@ export default class Overlay {
     this.window.clearTimeout(this.hideTimer);
 
     // Trigger the hook for highlight started
-    element.onHighlightStarted();
+    element.onHighlightStarted.call(element.getPopover(), element);
 
     // Old element has been deselected
     if (this.highlightedElement && !this.highlightedElement.isSame(this.lastHighlightedElement)) {
-      this.highlightedElement.onDeselected();
+      this.highlightedElement.onDeselected.call(this.highlightedElement.getPopover(), this.highlightedElement, true);
     }
 
     // get the position of element around which we need to draw
@@ -85,7 +85,7 @@ export default class Overlay {
     this.show();
 
     // Element has been highlighted
-    this.highlightedElement.onHighlighted();
+    this.highlightedElement.onHighlighted.call(element.getPopover(), element);
   }
 
   /**
@@ -135,7 +135,7 @@ export default class Overlay {
     // Deselect the highlighted element if any
     if (this.highlightedElement) {
       const hideStage = true;
-      this.highlightedElement.onDeselected(hideStage);
+      this.highlightedElement.onDeselected.call(this.highlightedElement.getPopover(), this.highlightedElement, hideStage);
     }
 
     this.highlightedElement = null;
