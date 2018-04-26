@@ -147,7 +147,7 @@ export default class Element {
     this.window.clearTimeout(this.animationTimeout);
 
     if (this.options.onDeselected) {
-      this.options.onDeselected(this);
+      this.options.onDeselected.call(this.popover, this);
     }
   }
 
@@ -171,7 +171,7 @@ export default class Element {
    */
   onHighlightStarted() {
     if (this.options.onHighlightStarted) {
-      this.options.onHighlightStarted(this);
+      this.options.onHighlightStarted.call(this.popover, this);
     }
   }
 
@@ -197,7 +197,7 @@ export default class Element {
     }
 
     if (this.options.onHighlighted) {
-      this.options.onHighlighted(this);
+      this.options.onHighlighted.call(this.popover, this);
     }
   }
 
