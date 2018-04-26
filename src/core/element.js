@@ -147,7 +147,7 @@ export default class Element {
     this.window.clearTimeout(this.animationTimeout);
 
     if (this.options.onDeselected) {
-      this.options.onDeselected.call(this.popover, this);
+      this.options.onDeselected.call(this.popover, this, hideStage);
     }
   }
 
