@@ -717,7 +717,7 @@ declare module 'driver.js' {
       /**
        * Is called when the overlay is about to reset
        */
-      onReset?: () => void,
+      onReset?: (element: Driver.Element) => void,
     }
 
     interface ElementOptions extends Driver.DriverOptions {
